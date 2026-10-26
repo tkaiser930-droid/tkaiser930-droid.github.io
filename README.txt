@@ -3,7 +3,7 @@ Open in Visual Studio Code, then use Live Server to open index.html. Use the sam
 
 Files: index.html, teams.html, team-manage.html, available-athletes.html, all-athletes.html, commissioner.html, trades.html, draft.html, schedule.html, styles.css, app.js.
 
-Default commissioner password: ChangeThisPassword123! Change it in app.js if desired. This is only a client-side convenience gate, not secure authentication.
+Commissioner password is set in app.js. The sign-in screen does not display a default-password hint. This is only a client-side convenience gate, not secure authentication; do not use this for real credentials or production security.
 
 Claim a team from Teams; enter owner name and password. Team passwords are hashed with Web Crypto. Team roster quotas: 5 x 250, 5 x 450, 3 x MXGP, 3 x MX2, 3 x MotoGP, 3 x F1 (22 total). Team add/drop, draft picks and accepted trades check roster quotas. Roster lock is enforced for any scheduled event date: Team Management and Trade Center are unavailable on event days. Events can be single-day (leave End Date blank) or multi-day (set an End Date); lock dates are inclusive from start through end date, using the browser local calendar date.
 
@@ -35,6 +35,11 @@ Scoring updates:
 - SMX bonus options: Fastest qualifier, Heat winner, Moto 1 winner, Moto 2 winner.
 - MXGP bonus options: Moto 1 winner, Moto 2 winner, Qualifying race winner.
 - MotoGP and F1 bonus options: Sprint winner (5), Fastest qualifier (2), and Sprint fastest qualifier (2).
-- Moto 1 winner and Moto 2 winner are worth 5 points each; Sprint winner is worth 5 points. All other bonuses are worth 2 points. Bonuses can be left unused or awarded to multiple riders.
+- Moto 1 winner and Moto 2 winner are worth 5 points each; Sprint winner is worth 5 points. Fastest lap is worth 1 point for all series. All other non-winner bonuses are worth 2 points. Bonuses can be left unused or awarded to multiple riders.
 - Commissioner dashboard includes a Previously Scored Events table with Edit Scoring. Saving an edit replaces the prior results for that event/series/division instead of duplicating them. Previous team attribution is preserved for riders already in that result group.
 - When editing older SMX/MXGP results that used the former generic “Moto winner” bonus, select the correct Moto 1 or Moto 2 replacement bonus; the old record does not identify which moto was won.
+
+LATEST SCORING / UI UPDATE
+- Added a +1 Fastest lap checkbox for every scoring series (SMX, MXGP, MotoGP, and F1).
+- Commissioner password updated in app.js; the local password hint has been removed from the login screen. As this is client-side JavaScript, the password is not secure against inspection by someone with access to the project files.
+- Racing number plates are slightly larger and use the more aggressive Teko display font, with Impact / Arial Black fallbacks. Google Fonts requires an internet connection; fallback fonts are used if it cannot load.
